@@ -1,0 +1,17 @@
+GET /logs-2018-08-22/_search
+{
+  "stored_fields" : ["logMessage", "priority", "size"],
+
+   "query": { "match": { "logMessage": "esri" } },
+   
+    "sort": {
+    "_script": {
+      "type": "number",
+      "order": "desc",
+      "script": {
+        "lang": "painless",
+        "source": "doc['priority'].value"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+GET /logs-2018-08-22/_search
+{
+    "stored_fields" : ["priority","logMessage","size"],
+    "query": {
+        "match": {
+            "logMessage": "esri"
+        }
+    }
+}

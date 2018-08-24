@@ -1,0 +1,22 @@
+GET /logs-2018-08-22/_search
+{
+    "stored_fields" : ["priority", "logMessage"],
+    "query": {
+        "match": {
+            "logMessage": "esri"
+        }
+    },
+    "rescore": {
+        "query": {
+           "rescore_query": {
+             "sltr": {
+                "model": "hackathon-model",
+                "params": {
+                    "query_string": "esri"
+                }
+            }
+           }
+        }
+    }
+}
+

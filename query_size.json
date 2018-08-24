@@ -1,0 +1,12 @@
+GET /logs-2018-08-22/_search
+{
+  "stored_fields" : ["logMessage", "priority", "size"],
+  "query": {
+    "function_score": {
+      "query":  { "match": { "logMessage": "esri" } },
+      "script_score": {
+        "script": "_score * Math.log(doc['size'].value + 1)"
+      }
+    }
+  }
+}
