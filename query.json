@@ -1,0 +1,8 @@
+{
+    "stored_fields" : ["priority","logMessage","size"],
+    "query": {
+        "match": {
+            "logMessage": "em-server.esri.com"
+        }
+    }
+}
